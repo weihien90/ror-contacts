@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Mary Jane
+  email: maryjane@gmail.com
+  phone: 9012345678
+  address: Elm Street, Earth
+  organization: Umbrella Corp
+  birthday: 2017-06-21
+  user_id: 1
+
+two:
+  name: Peter Parker
+  email: peterparker@gmail.com
+  phone: 9034512356
+  address: Fifth Avenue, Earth
+  organization: Spiderman Corp
+  birthday: 2017-06-10
+  user_id: 2
