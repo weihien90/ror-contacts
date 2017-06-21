@@ -57,6 +57,7 @@ end
 group :test do
   # Use SQLite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

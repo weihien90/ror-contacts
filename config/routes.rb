@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  # Homepage
   root 'home#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Signup path
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+
+  # Authentication resource
+  resources :users
 end
