@@ -69,4 +69,8 @@ class ContactTest < ActiveSupport::TestCase
     assert @contact.reload.email == "test3@test.com";
   end 
 
+  test "should exclude soft deleted by default" do
+    assert_not_equal Contact.count, Contact.unscoped.count
+  end
+
 end

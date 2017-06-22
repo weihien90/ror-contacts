@@ -30,8 +30,8 @@
             <% end %>
             <p><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Added <%= time_ago_in_words contact.created_at %> ago</p>
 
-            <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, contact, class: "btn btn-sm btn-danger",
-              method: :delete, data: { confirm: "Are you sure to delete #{contact.name}?" } %>
+            <%= link_to "<span class='glyphicon glyphicon-download-alt'></span>".html_safe, contact, class: "btn btn-sm btn-danger",
+              method: :delete, data: { confirm: "Are you sure to archive #{contact.name}?" } %>
           </div>
         </div>
       <% end %>

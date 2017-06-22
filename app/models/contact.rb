@@ -1,4 +1,6 @@
 class Contact < ApplicationRecord
+  default_scope { where(deleted_at: nil) }
+
   belongs_to :user
 
   before_save { self.email = email.downcase }

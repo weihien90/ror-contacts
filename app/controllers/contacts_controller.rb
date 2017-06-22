@@ -22,8 +22,8 @@ class ContactsController < ApplicationController
 
   def destroy
     contact = Contact.find(params[:id])
-    contact.destroy
-    flash[:success] = "Contact <#{contact.name}> deleted."
+    contact.update_attribute(:deleted_at, DateTime.now)
+    flash[:success] = "Contact <#{contact.name}> archived."
     redirect_to contacts_url
   end
 

@@ -26,3 +26,13 @@ three:
   organization: Spiderman Corp
   birthday: 2017-06-10
   user: two
+
+four:
+  name: Doctor Octopus
+  email: droctopus@gmail.com
+  phone: 9034512361
+  address: Baker Street, Earth
+  organization: Some Lab
+  birthday: 1967-08-01
+  user: two
+  deleted_at: 2017-06-22 17:28:33.836601
