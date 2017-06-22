@@ -29,9 +29,9 @@
               <p><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> Born <%= contact.birthday.to_s(:long) %></p>
             <% end %>
             <p><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Added <%= time_ago_in_words contact.created_at %> ago</p>
-            <button class="btn btn-xs btn-danger">
-              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            </button>
+
+            <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, contact, class: "btn btn-sm btn-danger",
+              method: :delete, data: { confirm: "Are you sure to delete #{contact.name}?" } %>
           </div>
         </div>
       <% end %>
