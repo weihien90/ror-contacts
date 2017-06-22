@@ -7,7 +7,16 @@ one:
   address: Elm Street, Earth
   organization: Umbrella Corp
   birthday: 2017-06-21
-  user_id: 1
+  user: one
+
+two:
+  name: Green Goblin
+  email: greengoblin@gmail.com
+  phone: 9012345656
+  address: Some Lab, USA
+  organization: World Peace Corp
+  birthday: 1989-01-21
+  user: one
 
 two:
   name: Peter Parker
@@ -16,4 +25,4 @@ two:
   address: Fifth Avenue, Earth
   organization: Spiderman Corp
   birthday: 2017-06-10
-  user_id: 2
+  user: two
