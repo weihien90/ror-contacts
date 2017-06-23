@@ -13,10 +13,13 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->                                                                            
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "My Contacts", contacts_path %></li>
-        <li><%= link_to "Archived Contacts", archived_contacts_path %></li>
-      </ul>
+      <% if logged_in? %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "My Contacts", contacts_path %></li>
+          <li><%= link_to "Archived Contacts", archived_contacts_path %></li>
+        </ul>
+      <% end %>
+
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li><%= link_to "Welcome, #{current_user.name}", "#" %></li>

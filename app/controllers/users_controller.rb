@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:show]
 
   def show
+    @contacts_count = @user.contacts.count
   end
 
   def new

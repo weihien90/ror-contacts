@@ -1,4 +1,9 @@
 <div class="jumbotron">
-  <h1>Contacts</h1>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Sign up</a></p>
+  <% if logged_in? %>
+    <h1>Contacts App</h1>
+    <p><%= link_to "My Contacts", contacts_path, class: "btn btn-primary btn-lg" %></p>
+  <% else %>
+    <h1>Welcome to Contacts App</h1>
+    <p><%= link_to "Sign Up", signup_path, class: "btn btn-primary btn-lg" %></p>
+  <% end %>
 </div>
