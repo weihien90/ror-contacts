@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   before_action :correct_user, only: [:destroy, :restore]
 
   def index
-    @contacts = current_user.contacts
+    @contacts = current_user.contacts.sort_by { |contact| contact.name.downcase }
   end
 
   def new
