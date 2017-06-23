@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
   default_scope { where(deleted_at: nil) }
+  scope :archived, -> { where.not(deleted_at: nil) }
 
   belongs_to :user
 

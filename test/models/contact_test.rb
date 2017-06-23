@@ -73,4 +73,10 @@ class ContactTest < ActiveSupport::TestCase
     assert_not_equal Contact.count, Contact.unscoped.count
   end
 
+  test "should get archived post" do
+    Contact.unscoped.archived.each do |contact|
+      assert contact.deleted_at
+    end
+  end
+
 end

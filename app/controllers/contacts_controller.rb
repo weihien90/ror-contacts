@@ -27,6 +27,10 @@ class ContactsController < ApplicationController
     redirect_to contacts_url
   end
 
+  def archived
+    @archived_contacts = Contact.unscoped.archived.where(user: current_user)
+  end
+
   private
 
     def contact_params

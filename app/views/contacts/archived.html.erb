@@ -1,0 +1,13 @@
+<% provide(:title, "Archived Contacts")%>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <h1 class="text-center">Archived Contacts</h1>
+
+    <ul class="list-group">
+      <%= render partial: "contact", collection: @archived_contacts, as: :contact %>
+    </ul>
+
+  </div>
+</div>

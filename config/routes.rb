@@ -13,5 +13,9 @@ Rails.application.routes.draw do
   resources :users
 
   # Resources
-  resources :contacts
+  resources :contacts do
+    collection do
+      get 'archived'
+    end
+  end
 end

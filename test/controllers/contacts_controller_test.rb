@@ -19,6 +19,12 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get archived page" do
+    log_in_as(@user)
+    get archived_contacts_path
+    assert_response :success
+  end
+
   test "should redirect new when not logged in" do
     get new_contact_path
     assert_not flash.empty?
@@ -33,6 +39,12 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect index when not logged in" do
     get contacts_path
+    assert_not flash.empty?
+    assert_redirected_to login_url
+  end
+
+  test "should redirect archived when not logged in" do
+    get archived_contacts_path
     assert_not flash.empty?
     assert_redirected_to login_url
   end
