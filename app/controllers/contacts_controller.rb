@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :logged_in_user
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:destroy, :restore]
 
   def index
     @contacts = current_user.contacts
@@ -21,14 +21,19 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    contact = Contact.find(params[:id])
-    contact.update_attribute(:deleted_at, DateTime.now)
-    flash[:success] = "Contact <#{contact.name}> archived."
+    @contact.update_attribute(:deleted_at, DateTime.now)
+    flash[:success] = "Contact <#{@contact.name}> archived."
     redirect_to contacts_url
   end
 
   def archived
     @archived_contacts = Contact.unscoped.archived.where(user: current_user)
+  end
+
+  def restore 
+    @contact.update_attribute(:deleted_at, nil)
+    flash[:success] = "Contact <#{@contact.name}> restored."
+    redirect_to archived_contacts_url
   end
 
   private
@@ -39,7 +44,7 @@ class ContactsController < ApplicationController
 
     # Confirms that the contact belongs to current user
     def correct_user
-      @contact = Contact.find(params[:id])
+      @contact = Contact.unscoped.find(params[:id])
       redirect_to root_url unless current_user?(@contact.user)
     end
 end

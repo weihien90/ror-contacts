@@ -12,10 +12,14 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :users
 
-  # Resources
+  # Contacts
   resources :contacts do
     collection do
       get 'archived'
+    end
+
+    member do
+      patch 'restore'
     end
   end
 end
