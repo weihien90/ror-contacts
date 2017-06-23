@@ -6,7 +6,7 @@
     <h1 class="text-center">Archived Contacts</h1>
 
     <ul class="list-group">
-      <% if @contacts.present? %>
+      <% if @archived_contacts.present? %>
         <%= render partial: "contact", collection: @archived_contacts, as: :contact %>
       <% else %>
         <%= "No archived contacts." %>
