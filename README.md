@@ -1,24 +1,46 @@
-# README
+# Contacts App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Contacts application built with Ruby on Rails. Similar to "Contacts" on most phone, this application enables you to search and manage your contacts list easily.
 
-Things you may want to cover:
+## Usage
 
-* Ruby version
+### Step 1: Install all prerequisites
 
-* System dependencies
+- Ruby on Rails 5.x and all its prerequisites. Please refer to [official guide](http://guides.rubyonrails.org/getting_started.html).
+- PostgreSQL server. If you have it installed, start by running
+```
+sudo service postgresql start
+```
 
-* Configuration
+### Step 2: Clone this project
+```
+cd DESIRED_DIRECTORY
+git clone https://github.com/weihien90/ror-contacts.git
+```
 
-* Database creation
+### Step 3: Setup
+Update database credentials
+```
+# config/database.yml
 
-* Database initialization
+development:
+  adapter: postgresql
+  encoding: unicode
+  template: template0
+  database: DATABASE_NAME
+  username: USERNAME
+  password: SECRET
+```
+Create and migrate the database schema (make sure your user have CREATEDB permission)
+```
+rails db:create db:migrate
+```
+Install all required gems
+```
+bundle install
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Start server
+```
+rails s
+```
