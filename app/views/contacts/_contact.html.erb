@@ -20,13 +20,13 @@
             <p><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Added <%= time_ago_in_words contact.created_at %> ago</p>
 
             <% unless contact.deleted_at %>
-              <%= link_to "<span class='glyphicon glyphicon-download-alt'></span> Archive".html_safe, contact, class: "btn btn-sm btn-danger", 
+              <%= link_to fa_icon("archive") + " Archive", contact, class: "btn btn-sm btn-warning", 
                 method: :delete, data: { confirm: "Are you sure to archive #{contact.name}?" } %>
             <% else %>
-              <%= link_to "<span class='glyphicon glyphicon-refresh'></span> Restore".html_safe, restore_contact_path(contact),
+              <%= link_to fa_icon("undo") + " Restore".html_safe, restore_contact_path(contact),
                 class: "btn btn-sm btn-success", method: :patch %> 
             <% end %>
 
-            <%= link_to("<span class='glyphicon glyphicon-download'></span> VCard".html_safe,  download_vcard_contact_path(contact.id, :format => 'vcf'), class: "btn btn-sm btn-info")  %>
+            <%= link_to( fa_icon("download") + " VCard".html_safe,  download_vcard_contact_path(contact.id, :format => 'vcf'), class: "btn btn-sm btn-info")  %>
           </div>
         </div>
