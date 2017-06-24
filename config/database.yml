@@ -9,9 +9,12 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  template: template0
+  database:
+  username:
+  password:
 
 
 # Warning: The database defined as "test" will be erased and
