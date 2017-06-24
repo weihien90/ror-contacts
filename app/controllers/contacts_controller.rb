@@ -44,6 +44,15 @@ class ContactsController < ApplicationController
     end
   end
 
+  def search
+    @keyword = params[:keyword]
+    unless @keyword.blank?
+      @matched_contacts = Contact.unscoped
+        .where(user: current_user)
+        .where("name LIKE :keyword OR email LIKE :keyword OR organization LIKE :keyword OR address LIKE :keyword", keyword: "%#{@keyword}%")
+    end
+  end
+
   private
 
     def contact_params

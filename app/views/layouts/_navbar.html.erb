@@ -35,6 +35,15 @@
           <li><%= link_to "Login", login_path %></li>
         <% end %>
       </ul>
+
+      <% if logged_in? %>
+        <form class="navbar-form navbar-right" action="<%= search_contacts_path %>" method="get">
+          <div class="form-group">
+            <input type="text" name="keyword" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-primary"><%= fa_icon("search") %></button>
+        </form>
+      <% end %>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

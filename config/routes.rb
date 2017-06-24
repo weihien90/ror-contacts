@@ -13,9 +13,10 @@ Rails.application.routes.draw do
   resources :users
 
   # Contacts
-  resources :contacts do
+  resources :contacts, except: [:show] do
     collection do
       get 'archived'
+      get 'search'
     end
 
     member do

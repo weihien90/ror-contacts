@@ -61,6 +61,12 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
+  test "should redirect search when not logged in" do
+    get search_contacts_path
+    assert_not flash.empty?
+    assert_redirected_to login_url
+  end
+
   test "should redirect download_vcard when not logged in" do
     get download_vcard_contact_path(@contact)
     assert_not flash.empty?

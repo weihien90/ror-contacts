@@ -1,0 +1,18 @@
+<% provide(:title, "Search Contact")%>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <h1 class="text-center">Search result of "<%= @keyword %>"</h1>
+    <h4 class="text-center"><%= pluralize @matched_contacts.count, "result" if @matched_contacts.present? %></h4>
+
+    <ul class="list-group">
+      <% if @matched_contacts.present? %>
+        <%= render partial: "contact", collection: @matched_contacts, as: :contact %>
+      <% else %>
+        <%= "No matched contacts." %>
+      <% end %>
+    </ul>
+
+  </div>
+</div>
