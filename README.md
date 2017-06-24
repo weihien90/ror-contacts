@@ -40,7 +40,7 @@ Install all required gems
 bundle install
 ```
 
-### Start server
+### Step 4: Start server
 ```
 rails s
 ```
