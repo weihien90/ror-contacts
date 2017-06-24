@@ -61,6 +61,12 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
+  test "should redirect download_vcard when not logged in" do
+    get download_vcard_contact_path(@contact)
+    assert_not flash.empty?
+    assert_redirected_to login_url
+  end
+
   test "should redirect destroy if contact not belongs to user" do
     log_in_as(@user)
     other_contact = contacts(:three)
@@ -79,6 +85,15 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Contact.count' do
       patch restore_contact_path(other_contact)
     end
+    assert flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test "should redirect download_vcard if contact not belongs to user" do
+    log_in_as(@user)
+    other_contact = contacts(:three)
+    assert_not_equal other_contact.user_id, @user.id
+    get download_vcard_contact_path(other_contact)
     assert flash.empty?
     assert_redirected_to root_url
   end

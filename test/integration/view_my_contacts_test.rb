@@ -39,4 +39,11 @@ class ViewMyContactsTest < ActionDispatch::IntegrationTest
     assert_nil Contact.unscoped.find(@contact.id).deleted_at
   end
 
+  test "download VCard of contact" do
+    log_in_as(@user)
+    get download_vcard_contact_path(@contact, format: :vcf)
+    assert_response :success
+    assert_equal "text/x-vcard", response.content_type
+  end
+
 end

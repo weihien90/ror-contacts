@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     member do
       patch 'restore'
+      get 'download-vcard'
     end
   end
 end

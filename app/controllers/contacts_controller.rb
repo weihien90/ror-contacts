@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :logged_in_user
-  before_action :correct_user, only: [:destroy, :restore]
+  before_action :correct_user, only: [:destroy, :restore, :download_vcard]
 
   def index
     @contacts = current_user.contacts.sort_by { |contact| contact.name.downcase }
@@ -36,6 +36,14 @@ class ContactsController < ApplicationController
     redirect_to archived_contacts_url
   end
 
+  def download_vcard
+    respond_to do |format|
+      format .vcf do
+        send_data generate_vcard(@contact).to_s, :filename => "#{@contact.name.parameterize}.vcf", :type => :vcf
+      end
+    end
+  end
+
   private
 
     def contact_params
@@ -46,5 +54,18 @@ class ContactsController < ApplicationController
     def correct_user
       @contact = Contact.unscoped.find(params[:id])
       redirect_to root_url unless current_user?(@contact.user)
+    end
+
+    # Generate VCard from contact
+    def generate_vcard(contact)
+      vcard = VCardigan.create
+      vcard.fullname contact.name
+      vcard.email contact.email
+      vcard.tel contact.phone
+      vcard.address contact.address
+      vcard.org contact.organization
+      vcard.birthday contact.birthday
+
+      return vcard
     end
 end
